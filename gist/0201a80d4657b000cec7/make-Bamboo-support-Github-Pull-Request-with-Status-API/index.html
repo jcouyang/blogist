@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Jichao Ouyang's Blogist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="username" content="">
+		<meta name="description" content="<img src=https://travis-ci.org/jcouyang/blogist.svg> or failed">
+    <link rel="stylesheet" href="/bower_components/bootswatch/flatly/bootstrap.min.css" media="screen">
+
+		<link rel="stylesheet" href="https://gist.github.com/assets/embed-91ddfaf352483e316b5398263e92b3e0.css" media="screen">
+		<link rel="stylesheet" href="/stylesheets/blogist.css" media="screen">
+		<script>
+			if(window.location.pathname!="/"){
+	window.location = window.location.origin + "#" +window.location.pathname.replace(".html","");
+			}
+			</script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+				<script src="/bower_components/bootswatch/bower_components/html5shiv/dist/html5shiv.js"></script>
+				<script src="/bower_components/bootswatch/bower_components/respond/dest/respond.min.js"></script>
+				<![endif]-->
+		
+  </head>
+  <body>
+		<div class="container">
+
+			<div class="row">
+				<div class="sidebar col-md-2">
+				</div>
+
+				<div class="col-md-8">
+
+					<div class="article">
+						<div id="gist19477651" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+
+
+    <div class="file-data">
+      <table cellpadding="0" cellspacing="0" class="lines highlight">
+        <tr>
+          <td class="line-numbers">
+            <span class="line-number" id="file-checkout_pr-sh-L1" rel="file-checkout_pr-sh-L1">1</span>
+            <span class="line-number" id="file-checkout_pr-sh-L2" rel="file-checkout_pr-sh-L2">2</span>
+            <span class="line-number" id="file-checkout_pr-sh-L3" rel="file-checkout_pr-sh-L3">3</span>
+            <span class="line-number" id="file-checkout_pr-sh-L4" rel="file-checkout_pr-sh-L4">4</span>
+            <span class="line-number" id="file-checkout_pr-sh-L5" rel="file-checkout_pr-sh-L5">5</span>
+            <span class="line-number" id="file-checkout_pr-sh-L6" rel="file-checkout_pr-sh-L6">6</span>
+            <span class="line-number" id="file-checkout_pr-sh-L7" rel="file-checkout_pr-sh-L7">7</span>
+            <span class="line-number" id="file-checkout_pr-sh-L8" rel="file-checkout_pr-sh-L8">8</span>
+            <span class="line-number" id="file-checkout_pr-sh-L9" rel="file-checkout_pr-sh-L9">9</span>
+            <span class="line-number" id="file-checkout_pr-sh-L10" rel="file-checkout_pr-sh-L10">10</span>
+            <span class="line-number" id="file-checkout_pr-sh-L11" rel="file-checkout_pr-sh-L11">11</span>
+            <span class="line-number" id="file-checkout_pr-sh-L12" rel="file-checkout_pr-sh-L12">12</span>
+          </td>
+          <td class="line-data">
+            <pre class="line-pre"><div class="line" id="file-checkout_pr-sh-LC1"><span class="pl-c">#!/bin/bash</span>
+</div><div class="line" id="file-checkout_pr-sh-LC2">&nbsp;
+</div><div class="line" id="file-checkout_pr-sh-LC3">GITHUB_API=https://api.github.com
+</div><div class="line" id="file-checkout_pr-sh-LC4"><span class="pl-c"># if github enterprise https://your.github.domain/api/v3</span>
+</div><div class="line" id="file-checkout_pr-sh-LC5">&nbsp;
+</div><div class="line" id="file-checkout_pr-sh-LC6"><span class="pl-k">if</span> [[ <span class="pl-k">-n</span> <span class="pl-vo">${bamboo_pull_num}</span> ]]<span class="pl-k">;</span> <span class="pl-k">then</span>
+</div><div class="line" id="file-checkout_pr-sh-LC7">  <span class="pl-s3">echo</span> <span class="pl-s1"><span class="pl-pds">&quot;</span>== send pending status ==<span class="pl-pds">&quot;</span></span>
+</div><div class="line" id="file-checkout_pr-sh-LC8">  curl -H <span class="pl-s1"><span class="pl-pds">&quot;</span>Authorization: token <span class="pl-vo">$bamboo_GITHUB_STATUS_API_password</span><span class="pl-pds">&quot;</span></span> --request POST -k --data <span class="pl-s1"><span class="pl-pds">&quot;</span>{<span class="pl-cce">\&quot;</span>state<span class="pl-cce">\&quot;</span>: <span class="pl-cce">\&quot;</span>pending<span class="pl-cce">\&quot;</span>, <span class="pl-cce">\&quot;</span>description<span class="pl-cce">\&quot;</span>: <span class="pl-cce">\&quot;</span>building...<span class="pl-cce">\&quot;</span>, <span class="pl-cce">\&quot;</span>target_url<span class="pl-cce">\&quot;</span>: <span class="pl-cce">\&quot;</span><span class="pl-vo">$bamboo_resultsUrl</span><span class="pl-cce">\&quot;</span>}<span class="pl-pds">&quot;</span></span> https://<span class="pl-vo">$GITHUB_API</span>/repos/the-money/condor/statuses/<span class="pl-vo">$bamboo_pull_sha</span> <span class="pl-k">&gt;</span> /dev/null  
+</div><div class="line" id="file-checkout_pr-sh-LC9">  <span class="pl-s3">echo</span> <span class="pl-s1"><span class="pl-pds">&quot;</span>git fetch PR <span class="pl-vo">$bamboo_pull_num</span> ==<span class="pl-pds">&quot;</span></span>
+</div><div class="line" id="file-checkout_pr-sh-LC10">  git fetch <span class="pl-vo">${bamboo.repository.git.repositoryUrl}</span> +refs/pull/<span class="pl-vo">$bamboo_pull_num</span>/merge:
+</div><div class="line" id="file-checkout_pr-sh-LC11">  git checkout FETCH_HEAD
+</div><div class="line" id="file-checkout_pr-sh-LC12"><span class="pl-k">fi</span>
+</div></pre>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/jcouyang/0201a80d4657b000cec7/raw/checkout_pr.sh" style="float:right">view raw</a>
+            <a href="https://gist.github.com/jcouyang/0201a80d4657b000cec7#file-checkout_pr-sh">checkout_pr.sh</a>
+            hosted with &#10084; by <a href="https://github.com">GitHub</a>
+          </div>
+        </div>
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+
+
+    <div class="file-data">
+      <table cellpadding="0" cellspacing="0" class="lines highlight">
+        <tr>
+          <td class="line-numbers">
+            <span class="line-number" id="file-notificate_github-sh-L1" rel="file-notificate_github-sh-L1">1</span>
+            <span class="line-number" id="file-notificate_github-sh-L2" rel="file-notificate_github-sh-L2">2</span>
+            <span class="line-number" id="file-notificate_github-sh-L3" rel="file-notificate_github-sh-L3">3</span>
+            <span class="line-number" id="file-notificate_github-sh-L4" rel="file-notificate_github-sh-L4">4</span>
+            <span class="line-number" id="file-notificate_github-sh-L5" rel="file-notificate_github-sh-L5">5</span>
+            <span class="line-number" id="file-notificate_github-sh-L6" rel="file-notificate_github-sh-L6">6</span>
+            <span class="line-number" id="file-notificate_github-sh-L7" rel="file-notificate_github-sh-L7">7</span>
+            <span class="line-number" id="file-notificate_github-sh-L8" rel="file-notificate_github-sh-L8">8</span>
+            <span class="line-number" id="file-notificate_github-sh-L9" rel="file-notificate_github-sh-L9">9</span>
+            <span class="line-number" id="file-notificate_github-sh-L10" rel="file-notificate_github-sh-L10">10</span>
+            <span class="line-number" id="file-notificate_github-sh-L11" rel="file-notificate_github-sh-L11">11</span>
+          </td>
+          <td class="line-data">
+            <pre class="line-pre"><div class="line" id="file-notificate_github-sh-LC1"><span class="pl-c">#!/bin/bash</span>
+</div><div class="line" id="file-notificate_github-sh-LC2">STATUS=<span class="pl-vo">$?</span>
+</div><div class="line" id="file-notificate_github-sh-LC3"><span class="pl-k">if</span> [[ <span class="pl-k">-n</span> <span class="pl-vo">${bamboo_pull_sha}</span> ]]<span class="pl-k">;</span> <span class="pl-k">then</span>
+</div><div class="line" id="file-notificate_github-sh-LC4">  <span class="pl-k">if</span> [ <span class="pl-vo">$STATUS</span> <span class="pl-k">!</span>= 0 ]<span class="pl-k">;</span> <span class="pl-k">then</span>
+</div><div class="line" id="file-notificate_github-sh-LC5">    <span class="pl-s3">echo</span> <span class="pl-s1"><span class="pl-pds">&#39;</span>pull reqeust build failed<span class="pl-pds">&#39;</span></span>
+</div><div class="line" id="file-notificate_github-sh-LC6">    curl -k -H <span class="pl-s1"><span class="pl-pds">&quot;</span>Authorization: token <span class="pl-vo">$bamboo_GITHUB_STATUS_API_password</span><span class="pl-pds">&quot;</span></span> --request POST --data <span class="pl-s1"><span class="pl-pds">&quot;</span>{<span class="pl-cce">\&quot;</span>state<span class="pl-cce">\&quot;</span>: <span class="pl-cce">\&quot;</span>failure<span class="pl-cce">\&quot;</span>, <span class="pl-cce">\&quot;</span>description<span class="pl-cce">\&quot;</span>: <span class="pl-cce">\&quot;</span>failure:(<span class="pl-cce">\&quot;</span>, <span class="pl-cce">\&quot;</span>target_url<span class="pl-cce">\&quot;</span>: <span class="pl-cce">\&quot;</span><span class="pl-vo">${bamboo.buildResultsUrl}</span><span class="pl-cce">\&quot;</span>}<span class="pl-pds">&quot;</span></span> <span class="pl-vo">$GITHUB_API</span>/repos/:user/:repo/statuses/<span class="pl-vo">$bamboo_pull_sha</span> <span class="pl-k">&gt;</span> /dev/null
+</div><div class="line" id="file-notificate_github-sh-LC7">  <span class="pl-k">else</span>
+</div><div class="line" id="file-notificate_github-sh-LC8">    <span class="pl-s3">echo</span> <span class="pl-s1"><span class="pl-pds">&#39;</span>pull request build success<span class="pl-pds">&#39;</span></span>
+</div><div class="line" id="file-notificate_github-sh-LC9">    curl -k -H <span class="pl-s1"><span class="pl-pds">&quot;</span>Authorization: token <span class="pl-vo">$bamboo_GITHUB_STATUS_API_password</span><span class="pl-pds">&quot;</span></span> --request POST --data <span class="pl-s1"><span class="pl-pds">&quot;</span>{<span class="pl-cce">\&quot;</span>state<span class="pl-cce">\&quot;</span>: <span class="pl-cce">\&quot;</span>success<span class="pl-cce">\&quot;</span>, <span class="pl-cce">\&quot;</span>description<span class="pl-cce">\&quot;</span>: <span class="pl-cce">\&quot;</span>Success:)<span class="pl-cce">\&quot;</span>, <span class="pl-cce">\&quot;</span>target_url<span class="pl-cce">\&quot;</span>: <span class="pl-cce">\&quot;</span><span class="pl-vo">${bamboo.buildResultsUrl}</span><span class="pl-cce">\&quot;</span>}<span class="pl-pds">&quot;</span></span> <span class="pl-vo">$GITHUB_API</span>/repos/:user/:repo/statuses/<span class="pl-vo">$bamboo_pull_sha</span> <span class="pl-k">&gt;</span> /dev/null
+</div><div class="line" id="file-notificate_github-sh-LC10">  <span class="pl-k">fi</span>
+</div><div class="line" id="file-notificate_github-sh-LC11"><span class="pl-k">fi</span>
+</div></pre>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/jcouyang/0201a80d4657b000cec7/raw/notificate_github.sh" style="float:right">view raw</a>
+            <a href="https://gist.github.com/jcouyang/0201a80d4657b000cec7#file-notificate_github-sh">notificate_github.sh</a>
+            hosted with &#10084; by <a href="https://github.com">GitHub</a>
+          </div>
+        </div>
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+
+
+    <div class="file-data">
+      <table cellpadding="0" cellspacing="0" class="lines highlight">
+        <tr>
+          <td class="line-numbers">
+            <span class="line-number" id="file-stop_build_if_pr-sh-L1" rel="file-stop_build_if_pr-sh-L1">1</span>
+            <span class="line-number" id="file-stop_build_if_pr-sh-L2" rel="file-stop_build_if_pr-sh-L2">2</span>
+            <span class="line-number" id="file-stop_build_if_pr-sh-L3" rel="file-stop_build_if_pr-sh-L3">3</span>
+            <span class="line-number" id="file-stop_build_if_pr-sh-L4" rel="file-stop_build_if_pr-sh-L4">4</span>
+            <span class="line-number" id="file-stop_build_if_pr-sh-L5" rel="file-stop_build_if_pr-sh-L5">5</span>
+            <span class="line-number" id="file-stop_build_if_pr-sh-L6" rel="file-stop_build_if_pr-sh-L6">6</span>
+          </td>
+          <td class="line-data">
+            <pre class="line-pre"><div class="line" id="file-stop_build_if_pr-sh-LC1"><span class="pl-c">#!/bin/bash</span>
+</div><div class="line" id="file-stop_build_if_pr-sh-LC2">&nbsp;
+</div><div class="line" id="file-stop_build_if_pr-sh-LC3"><span class="pl-k">if</span> [[ <span class="pl-k">-n</span> <span class="pl-vo">${bamboo_pull_num}</span> ]]<span class="pl-k">;</span> <span class="pl-k">then</span>
+</div><div class="line" id="file-stop_build_if_pr-sh-LC4">  <span class="pl-s3">echo</span> <span class="pl-s1"><span class="pl-pds">&#39;</span>stoping bamboo<span class="pl-pds">&#39;</span></span>
+</div><div class="line" id="file-stop_build_if_pr-sh-LC5">  curl <span class="pl-s1"><span class="pl-pds">&quot;</span>http://<span class="pl-vo">${bamboo_BAMBOO_USER}</span>:<span class="pl-vo">${bamboo_BAMBOO_password}</span>@your.bamboo.domain/build/admin/stopPlan.action?<span class="pl-vo">${bamboo.planResultKey}</span>-<span class="pl-vo">${bamboo.buildNumber}</span><span class="pl-pds">&quot;</span></span>
+</div><div class="line" id="file-stop_build_if_pr-sh-LC6"><span class="pl-k">fi</span>
+</div></pre>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/jcouyang/0201a80d4657b000cec7/raw/stop_build_if_PR.sh" style="float:right">view raw</a>
+            <a href="https://gist.github.com/jcouyang/0201a80d4657b000cec7#file-stop_build_if_pr-sh">stop_build_if_PR.sh</a>
+            hosted with &#10084; by <a href="https://github.com">GitHub</a>
+          </div>
+        </div>
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+
+
+    <div class="file-data">
+      <table cellpadding="0" cellspacing="0" class="lines highlight">
+        <tr>
+          <td class="line-numbers">
+            <span class="line-number" id="file-trigger-bamboo-coffee-L1" rel="file-trigger-bamboo-coffee-L1">1</span>
+            <span class="line-number" id="file-trigger-bamboo-coffee-L2" rel="file-trigger-bamboo-coffee-L2">2</span>
+            <span class="line-number" id="file-trigger-bamboo-coffee-L3" rel="file-trigger-bamboo-coffee-L3">3</span>
+            <span class="line-number" id="file-trigger-bamboo-coffee-L4" rel="file-trigger-bamboo-coffee-L4">4</span>
+            <span class="line-number" id="file-trigger-bamboo-coffee-L5" rel="file-trigger-bamboo-coffee-L5">5</span>
+            <span class="line-number" id="file-trigger-bamboo-coffee-L6" rel="file-trigger-bamboo-coffee-L6">6</span>
+            <span class="line-number" id="file-trigger-bamboo-coffee-L7" rel="file-trigger-bamboo-coffee-L7">7</span>
+            <span class="line-number" id="file-trigger-bamboo-coffee-L8" rel="file-trigger-bamboo-coffee-L8">8</span>
+            <span class="line-number" id="file-trigger-bamboo-coffee-L9" rel="file-trigger-bamboo-coffee-L9">9</span>
+            <span class="line-number" id="file-trigger-bamboo-coffee-L10" rel="file-trigger-bamboo-coffee-L10">10</span>
+            <span class="line-number" id="file-trigger-bamboo-coffee-L11" rel="file-trigger-bamboo-coffee-L11">11</span>
+            <span class="line-number" id="file-trigger-bamboo-coffee-L12" rel="file-trigger-bamboo-coffee-L12">12</span>
+            <span class="line-number" id="file-trigger-bamboo-coffee-L13" rel="file-trigger-bamboo-coffee-L13">13</span>
+            <span class="line-number" id="file-trigger-bamboo-coffee-L14" rel="file-trigger-bamboo-coffee-L14">14</span>
+            <span class="line-number" id="file-trigger-bamboo-coffee-L15" rel="file-trigger-bamboo-coffee-L15">15</span>
+            <span class="line-number" id="file-trigger-bamboo-coffee-L16" rel="file-trigger-bamboo-coffee-L16">16</span>
+            <span class="line-number" id="file-trigger-bamboo-coffee-L17" rel="file-trigger-bamboo-coffee-L17">17</span>
+            <span class="line-number" id="file-trigger-bamboo-coffee-L18" rel="file-trigger-bamboo-coffee-L18">18</span>
+            <span class="line-number" id="file-trigger-bamboo-coffee-L19" rel="file-trigger-bamboo-coffee-L19">19</span>
+            <span class="line-number" id="file-trigger-bamboo-coffee-L20" rel="file-trigger-bamboo-coffee-L20">20</span>
+            <span class="line-number" id="file-trigger-bamboo-coffee-L21" rel="file-trigger-bamboo-coffee-L21">21</span>
+            <span class="line-number" id="file-trigger-bamboo-coffee-L22" rel="file-trigger-bamboo-coffee-L22">22</span>
+            <span class="line-number" id="file-trigger-bamboo-coffee-L23" rel="file-trigger-bamboo-coffee-L23">23</span>
+            <span class="line-number" id="file-trigger-bamboo-coffee-L24" rel="file-trigger-bamboo-coffee-L24">24</span>
+            <span class="line-number" id="file-trigger-bamboo-coffee-L25" rel="file-trigger-bamboo-coffee-L25">25</span>
+            <span class="line-number" id="file-trigger-bamboo-coffee-L26" rel="file-trigger-bamboo-coffee-L26">26</span>
+            <span class="line-number" id="file-trigger-bamboo-coffee-L27" rel="file-trigger-bamboo-coffee-L27">27</span>
+            <span class="line-number" id="file-trigger-bamboo-coffee-L28" rel="file-trigger-bamboo-coffee-L28">28</span>
+            <span class="line-number" id="file-trigger-bamboo-coffee-L29" rel="file-trigger-bamboo-coffee-L29">29</span>
+            <span class="line-number" id="file-trigger-bamboo-coffee-L30" rel="file-trigger-bamboo-coffee-L30">30</span>
+            <span class="line-number" id="file-trigger-bamboo-coffee-L31" rel="file-trigger-bamboo-coffee-L31">31</span>
+            <span class="line-number" id="file-trigger-bamboo-coffee-L32" rel="file-trigger-bamboo-coffee-L32">32</span>
+            <span class="line-number" id="file-trigger-bamboo-coffee-L33" rel="file-trigger-bamboo-coffee-L33">33</span>
+          </td>
+          <td class="line-data">
+            <pre class="line-pre"><div class="line" id="file-trigger-bamboo-coffee-LC1"><span class="pl-v"><span class="pl-v">url           <span class="pl-k">=</span></span></span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">&#39;</span>url<span class="pl-pds">&#39;</span></span>)
+</div><div class="line" id="file-trigger-bamboo-coffee-LC2"><span class="pl-v"><span class="pl-v">querystring   <span class="pl-k">=</span></span></span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">&#39;</span>querystring<span class="pl-pds">&#39;</span></span>)
+</div><div class="line" id="file-trigger-bamboo-coffee-LC3"><span class="pl-v"><span class="pl-v">eventTypesRaw <span class="pl-k">=</span></span></span> <span class="pl-sv">process</span>.env[<span class="pl-s1"><span class="pl-pds">&#39;</span>BAMBOO_EVENT_NOTIFIER_TYPES<span class="pl-pds">&#39;</span></span>]
+</div><div class="line" id="file-trigger-bamboo-coffee-LC4"><span class="pl-v"><span class="pl-v">eventTypes    <span class="pl-k">=</span></span></span> []
+</div><div class="line" id="file-trigger-bamboo-coffee-LC5">&nbsp;
+</div><div class="line" id="file-trigger-bamboo-coffee-LC6"><span class="pl-k">if</span> eventTypesRaw<span class="pl-k">?</span>
+</div><div class="line" id="file-trigger-bamboo-coffee-LC7">  <span class="pl-v"><span class="pl-v">eventTypes <span class="pl-k">=</span></span></span> eventTypesRaw.split(<span class="pl-s1"><span class="pl-pds">&#39;</span>,<span class="pl-pds">&#39;</span></span>)
+</div><div class="line" id="file-trigger-bamboo-coffee-LC8"><span class="pl-k">else</span>
+</div><div class="line" id="file-trigger-bamboo-coffee-LC9">  <span class="pl-en">console</span>.<span class="pl-s3">warn</span>(<span class="pl-s1"><span class="pl-pds">&quot;</span>github-repo-event-notifier is not setup to receive any events (BAMBOO_EVENT_NOTIFIER_TYPES is empty).<span class="pl-pds">&quot;</span></span>)
+</div><div class="line" id="file-trigger-bamboo-coffee-LC10">&nbsp;
+</div><div class="line" id="file-trigger-bamboo-coffee-LC11"><span class="pl-en">module.exports </span><span class="pl-k">=</span><span class="pl-vpf"> <span class="pl-vpf">(robot)</span></span> <span class="pl-st"><span class="pl-st">-&gt;</span></span>
+</div><div class="line" id="file-trigger-bamboo-coffee-LC12">  robot.router.post <span class="pl-s1"><span class="pl-pds">&quot;</span>/hubot/trigger-bamboo<span class="pl-pds">&quot;</span></span>, <span class="pl-vpf">(req, res)</span> <span class="pl-st">-&gt;</span>
+</div><div class="line" id="file-trigger-bamboo-coffee-LC13">    <span class="pl-v"><span class="pl-v">query <span class="pl-k">=</span></span></span> querystring.parse(url.parse(req.url).query)
+</div><div class="line" id="file-trigger-bamboo-coffee-LC14">    <span class="pl-v"><span class="pl-v">bamboo_url <span class="pl-k">=</span></span></span> query.bamboo
+</div><div class="line" id="file-trigger-bamboo-coffee-LC15">    <span class="pl-v"><span class="pl-v">build_key <span class="pl-k">=</span></span></span> query.buildKey
+</div><div class="line" id="file-trigger-bamboo-coffee-LC16">    <span class="pl-v"><span class="pl-v">room <span class="pl-k">=</span></span></span> query.room
+</div><div class="line" id="file-trigger-bamboo-coffee-LC17">    res.end <span class="pl-s1"><span class="pl-pds">&quot;</span><span class="pl-pds">&quot;</span></span> <span class="pl-k">if</span> <span class="pl-k">!</span>bamboo_url <span class="pl-k">||</span> <span class="pl-k">!</span>room
+</div><div class="line" id="file-trigger-bamboo-coffee-LC18">    <span class="pl-v"><span class="pl-v">data <span class="pl-k">=</span></span></span> req.body
+</div><div class="line" id="file-trigger-bamboo-coffee-LC19">    <span class="pl-v"><span class="pl-v">eventType <span class="pl-k">=</span></span></span> req.headers[<span class="pl-s1"><span class="pl-pds">&quot;</span>x-github-event<span class="pl-pds">&quot;</span></span>]
+</div><div class="line" id="file-trigger-bamboo-coffee-LC20">    <span class="pl-en">console</span>.<span class="pl-s3">log</span> <span class="pl-s1"><span class="pl-pds">&quot;</span>Processing event type <span class="pl-s2"><span class="pl-pse">#{</span>eventType<span class="pl-pse">}</span></span>...<span class="pl-pds">&quot;</span></span>
+</div><div class="line" id="file-trigger-bamboo-coffee-LC21">&nbsp;
+</div><div class="line" id="file-trigger-bamboo-coffee-LC22">    <span class="pl-k">try</span>
+</div><div class="line" id="file-trigger-bamboo-coffee-LC23">      <span class="pl-k">if</span> eventType <span class="pl-k">in</span> eventTypes
+</div><div class="line" id="file-trigger-bamboo-coffee-LC24">        <span class="pl-c"># uncomment next line and comment next next line if you want a manually trigger PR build</span>
+</div><div class="line" id="file-trigger-bamboo-coffee-LC25">        <span class="pl-c">#robot.messageRoom room,&quot;poke me to trigger build for pull request #{data.number} of #{data.pull_request.head.repo.name} #{bamboo_url}/ajax/runParametrisedManualBuild.action?planKey=#{build_key}&amp;buildNumber=&amp;customRevision=&amp;key_pull_num=pull_num&amp;variable_pull_num=#{data.number}&amp;key_pull_sha=pull_sha&amp;variable_pull_sha=#{data.pull_request.head.sha}&amp;bamboo.successReturnMode=json&amp;decorator=nothing&amp;confirm=true&quot;</span>
+</div><div class="line" id="file-trigger-bamboo-coffee-LC26">        robot.http(<span class="pl-s1"><span class="pl-pds">&quot;</span><span class="pl-s2"><span class="pl-pse">#{</span>bamboo_url<span class="pl-pse">}</span></span>/rest/api/latest/queue/<span class="pl-s2"><span class="pl-pse">#{</span>build_key<span class="pl-pse">}</span></span>?bamboo.variable.pull_sha=<span class="pl-s2"><span class="pl-pse">#{</span>data.pull_request.head.sha<span class="pl-pse">}</span></span>&amp;bamboo.variable.pull_num=<span class="pl-s2"><span class="pl-pse">#{</span>data.number<span class="pl-pse">}</span></span><span class="pl-pds">&quot;</span></span>)
+</div><div class="line" id="file-trigger-bamboo-coffee-LC27">          .post()
+</div><div class="line" id="file-trigger-bamboo-coffee-LC28">      <span class="pl-k">else</span>
+</div><div class="line" id="file-trigger-bamboo-coffee-LC29">        <span class="pl-en">console</span>.<span class="pl-s3">log</span> <span class="pl-s1"><span class="pl-pds">&quot;</span>Ignoring <span class="pl-s2"><span class="pl-pse">#{</span>eventType<span class="pl-pse">}</span></span> event as it&#39;s not allowed.<span class="pl-pds">&quot;</span></span>
+</div><div class="line" id="file-trigger-bamboo-coffee-LC30">    <span class="pl-k">catch</span> error
+</div><div class="line" id="file-trigger-bamboo-coffee-LC31">      <span class="pl-en">console</span>.<span class="pl-s3">log</span> <span class="pl-s1"><span class="pl-pds">&quot;</span>github repo event notifier error: <span class="pl-s2"><span class="pl-pse">#{</span>error<span class="pl-pse">}</span></span>. Request: <span class="pl-s2"><span class="pl-pse">#{</span>req.body<span class="pl-pse">}</span></span><span class="pl-pds">&quot;</span></span>
+</div><div class="line" id="file-trigger-bamboo-coffee-LC32">&nbsp;
+</div><div class="line" id="file-trigger-bamboo-coffee-LC33">    res.end <span class="pl-s1"><span class="pl-pds">&quot;</span><span class="pl-pds">&quot;</span></span>
+</div></pre>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/jcouyang/0201a80d4657b000cec7/raw/trigger-bamboo.coffee" style="float:right">view raw</a>
+            <a href="https://gist.github.com/jcouyang/0201a80d4657b000cec7#file-trigger-bamboo-coffee">trigger-bamboo.coffee</a>
+            hosted with &#10084; by <a href="https://github.com">GitHub</a>
+          </div>
+        </div>
+</div>
+
+					</div>
+				</div>
+				<div class="sidebar col-md-2">
+				</div>
+			</div>	
+		</div>
+
+		<footer>
+      <div class="container">
+				<div class="row">
+					<div class="col-md-2">
+					</div>
+
+					<div class="col-md-8">
+ 						<p>Copyright © Jichao Ouyang</p>
+						<p> Powered by <a rel="nofollow" href="http://blogist.github.io">Blogist</a> <span class="glyphicon glyphicon-heart"></span> <a href="http://github.com/jcouyang/kokaku">Kokaku</a> and <a href="https://gist.github.com">Gist</a> </p>
+					</div>
+				</div>
+        <div class="col-md-2">
+				</div>
+
+
+      </div>
+
+    </footer>
+	</body>
+</html>
