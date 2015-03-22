@@ -11,7 +11,7 @@ node_js:
 before_script:
 - git config --global user.name "Jichao Ouyang"
 - git config --global user.email "oyanglulu@gmail.com"
-- export REPO_URL="https://$GH_TOKEN@github.com/jcouyang/jcouyang.github.com.git"
+- export REPO_URL="https://$GH_TOKEN@github.com/jcouyang/blogist.git"
 script:
 - grunt-init config
 - npm test
@@ -19,13 +19,13 @@ after_success:
 - node crawl
 - grunt sitemap
 - git remote add blogist $REPO_URL
-- git checkout -B master
+- git checkout -b gh-pages
 - git rm .travis.yml -f
 - git add 404.html sitemap.xml index.html javascripts bower_components -f
 - git add CNAME
 - git add gist atom.xml -f
 - git commit -am 'publi:ship:'
-- git push blogist master -f -q
+- git push blogist gh-pages -f -q
 env:
   global:
   - secure: MNA6NFLkLtwZfIM22/eT9zhQSIQOLzw1R3azvFwqQsuJVtv1aeZwVqIJd+FA40htMCn+RSXJXjTDJk0L240HX0SO78LRdyDaondH13Yx7K8tYHoBm59+Zm/okuYBOTZwpKWjFDVPhxHEQTlXAfkphXAmaArmPbrnzwOlAmZABzU=
